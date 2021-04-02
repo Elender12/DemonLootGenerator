@@ -1,35 +1,44 @@
 package com.elender.lootgenerator.dbmanagement;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.util.UUID;
 
-@Entity
+@Entity(tableName = "items")
 public class LootItem {
 
     @PrimaryKey
-    private UUID id;
+    @NonNull
+    public String id;
 
     @ColumnInfo(name="source")
-    private String source;
+    public String source;
 
     @ColumnInfo(name="loot_colour")
-    private String lootColour;
+    public String lootColour;
 
     @ColumnInfo(name="name")
-    private String name;
+    public String name;
 
     public LootItem() {
-        this.id= UUID.randomUUID();
+        this.id= UUID.randomUUID().toString();
     }
 
-    public UUID getId() {
+    public LootItem(String source, String lootColour, String name) {
+        this.id= UUID.randomUUID().toString();
+        this.source = source;
+        this.lootColour = lootColour;
+        this.name = name;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 
