@@ -12,6 +12,6 @@ public interface LootItemDao {
     void insertItem(LootItem... lootItems);
 
     //Mostrar los elementos de una determinada fuente
-    @Query("SELECT * FROM items WHERE source = :source")
+    @Query("SELECT * FROM LootItem WHERE source = :source")
     LootItem[] showSourceItems(String source);
 }

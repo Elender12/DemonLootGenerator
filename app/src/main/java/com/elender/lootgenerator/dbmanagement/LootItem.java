@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 
 import java.util.UUID;
 
-@Entity(tableName = "items")
+@Entity(tableName = "LootItem")
 public class LootItem {
 
     @PrimaryKey
@@ -15,17 +15,16 @@ public class LootItem {
     public String id;
 
     @ColumnInfo(name="source")
+    @NonNull
     public String source;
 
     @ColumnInfo(name="loot_colour")
+    @NonNull
     public String lootColour;
 
     @ColumnInfo(name="name")
+    @NonNull
     public String name;
-
-    public LootItem() {
-        this.id= UUID.randomUUID().toString();
-    }
 
     public LootItem(String source, String lootColour, String name) {
         this.id= UUID.randomUUID().toString();

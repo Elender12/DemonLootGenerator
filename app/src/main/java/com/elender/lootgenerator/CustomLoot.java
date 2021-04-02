@@ -40,7 +40,7 @@ public class CustomLoot extends AppCompatActivity {
     public void showCustomSourceItems(View view){
         Intent intent=new Intent(this, CustomSourceItems.class);
         //todo check also if is not empty?
-        if(sourceName.getText().toString() != null ){
+        if(sourceName.getText().toString() != null && !sourceName.getText().toString().isEmpty() ){
             intent.putExtra("sourceName",sourceName.getText().toString());
             startActivity(intent);
         }else{

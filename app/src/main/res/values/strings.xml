@@ -9,4 +9,7 @@
     <string name="save_btn">Guardar</string>
     <string name="list_items">Ver fuente</string>
     <string name="add_source">Crear fuente</string>
+    <string name="choose_source">Elegir una fuente:</string>
+    <string name="choose_quantity">Elegir una cantidad</string>
+
 </resources>
