@@ -1,4 +1,4 @@
-package com.elender.lootgenerator.dbmanagement;
+package com.elender.lootgenerator.db;
 
 import android.content.Context;
 

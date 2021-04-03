@@ -1,19 +1,18 @@
-package com.elender.lootgenerator;
+package com.elender.lootgenerator.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
-
-import com.elender.lootgenerator.dbmanagement.ItemDB;
-import com.elender.lootgenerator.dbmanagement.LootItem;
+import com.elender.lootgenerator.R;
+import com.elender.lootgenerator.adapters.CustomAdapter;
+import com.elender.lootgenerator.db.ItemDB;
+import com.elender.lootgenerator.db.LootItem;
 
 import java.util.ArrayList;
 
@@ -52,13 +51,7 @@ public class CustomSourceItems extends AppCompatActivity  implements CustomAdapt
             mDataset[i] = items[i].getLootColour() + " es " + items[i].getName();
             Log.d(TAG, "onCreate: "+items[i].getLootColour() + " es " + items[i].getName());
         }
-     //   ArrayAdapter adaptador = new ArrayAdapter(this, android.R.layout.simple_list_item_activated_1, datos);
-       // lista.setAdapter(adaptador);
 
-        // LinearLayoutManager is used here, this will layout the elements in a similar fashion
-        // to the way ListView would layout elements. The RecyclerView.LayoutManager defines how
-        // elements are laid out.
-        // set up the RecyclerView
 
         RecyclerView recyclerView = findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

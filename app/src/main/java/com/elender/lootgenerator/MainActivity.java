@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.elender.lootgenerator.activities.CustomLoot;
+import com.elender.lootgenerator.activities.LootGenerator;
+
 public class MainActivity extends AppCompatActivity {
 
     Intent intent;

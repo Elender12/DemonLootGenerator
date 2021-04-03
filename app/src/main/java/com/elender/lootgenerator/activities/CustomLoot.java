@@ -1,4 +1,4 @@
-package com.elender.lootgenerator;
+package com.elender.lootgenerator.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,8 +8,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.elender.lootgenerator.dbmanagement.ItemDB;
-import com.elender.lootgenerator.dbmanagement.LootItem;
+import com.elender.lootgenerator.R;
+import com.elender.lootgenerator.db.ItemDB;
+import com.elender.lootgenerator.db.LootItem;
 
 public class CustomLoot extends AppCompatActivity {
 

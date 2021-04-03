@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LootGenerator">
-        <activity android:name=".CustomSourceItems"/>
-        <activity android:name=".CustomLoot" />
-        <activity android:name=".LootGenerator" />
+        <activity android:name=".activities.GeneratedLootPopUp"></activity>
+        <activity android:name=".activities.CustomSourceItems" />
+        <activity android:name=".activities.CustomLoot" />
+        <activity android:name=".activities.LootGenerator" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
