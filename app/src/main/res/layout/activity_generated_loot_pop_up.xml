@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/layoutPopup"
+    android:background="@drawable/gradient_list"
     tools:context=".activities.GeneratedLootPopUp">
 
     <androidx.constraintlayout.widget.Guideline
@@ -35,10 +37,8 @@
         app:layout_constraintGuide_percent="0.97" />
 
     <TextView
-        android:id="@+id/textView14"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/dark_red"
         app:layout_constraintBottom_toTopOf="@+id/guideline171"
         app:layout_constraintEnd_toStartOf="@+id/guideline167"
         app:layout_constraintHorizontal_bias="0.826"
@@ -83,7 +83,22 @@
         app:layout_constraintStart_toStartOf="@+id/guideline166"
         app:layout_constraintTop_toTopOf="@+id/guideline155"
         app:layout_constraintVertical_bias="0.317"
-        app:srcCompat="@drawable/main_demon" />
+        app:srcCompat="@drawable/main_demon"
+        android:src="@drawable/shine"
+        android:contentDescription="@string/chest_img" />
+
+    <ImageView
+        android:id="@+id/shine"
+        android:layout_width="84dp"
+        android:layout_height="94dp"
+        android:contentDescription="@string/chest_img"
+        android:src="@drawable/shine"
+        app:layout_constraintBottom_toTopOf="@+id/guideline156"
+        app:layout_constraintEnd_toStartOf="@+id/guideline167"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/guideline166"
+        app:layout_constraintTop_toTopOf="@+id/guideline155"
+        app:layout_constraintVertical_bias="0.382" />
 
     <TextView
         android:id="@+id/items_TV"

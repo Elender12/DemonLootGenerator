@@ -37,33 +37,38 @@ public class CustomSourceItems extends AppCompatActivity  implements CustomAdapt
         setContentView(R.layout.activity_custom_source_items);
 
         db = ItemDB.getItemDataBase(this);
+        String sourceName ="";
         Bundle bundle=getIntent().getExtras();
-        String sourceName =bundle.getString("sourceName");
-        LootItem[] items = db.dao().showSourceItems(sourceName);
-
-
-
-        ArrayList<String> data = new ArrayList<>();
-        mDataset = new String[items.length];
-        for(int i = 0; i < items.length; i++)
-        {
-            data.add(items[i].getLootColour() + " es " + items[i].getName());
-            mDataset[i] = items[i].getLootColour() + " es " + items[i].getName();
-            Log.d(TAG, "onCreate: "+items[i].getLootColour() + " es " + items[i].getName());
+        if(bundle != null){
+            sourceName =bundle.getString("sourceName");
         }
 
+        LootItem[] items = db.dao().showSourceItems(sourceName);
 
-        RecyclerView recyclerView = findViewById(R.id.recycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new CustomAdapter(this, data);
-        mAdapter.setClickListener(this);
-        recyclerView.setAdapter(mAdapter);
+        if(items.length > 0){
+            ArrayList<String> data = new ArrayList<>();
+            mDataset = new String[items.length];
+            for(int i = 0; i < items.length; i++)
+            {
+                data.add(items[i].getLootColour() + " es " + items[i].getName());
+                mDataset[i] = items[i].getLootColour() + " es " + items[i].getName();
+                Log.d(TAG, "onCreate: "+items[i].getLootColour() + " es " + items[i].getName());
+            }
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-                layoutManager.getOrientation());
-        recyclerView.addItemDecoration(dividerItemDecoration);
+            RecyclerView recyclerView = findViewById(R.id.recycler);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            mAdapter = new CustomAdapter(this, data);
+            mAdapter.setClickListener(this);
+            recyclerView.setAdapter(mAdapter);
 
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+            DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                    layoutManager.getOrientation());
+            recyclerView.addItemDecoration(dividerItemDecoration);
+        }else{
+            Toast.makeText(this, "No hay datos para esa fuente.", Toast.LENGTH_LONG).show();
+            finish();
+        }
     }
 
     @Override

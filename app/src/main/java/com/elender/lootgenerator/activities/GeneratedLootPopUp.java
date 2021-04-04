@@ -1,11 +1,16 @@
 package com.elender.lootgenerator.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,7 +22,7 @@ import com.elender.lootgenerator.utils.GeneratorHelper;
 public class GeneratedLootPopUp extends AppCompatActivity {
 
     private static final String TAG = "GeneratorPopUp";
-    ImageView img;
+    ImageView img, shine;
     TextView items;
     Button backBT;
 
@@ -25,7 +30,11 @@ public class GeneratedLootPopUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generated_loot_pop_up);
+        ConstraintLayout constraintLayout = findViewById(R.id.layoutPopup);
+        AnimationDrawable bckDrawable = (AnimationDrawable) constraintLayout.getBackground();
+
         img = findViewById(R.id.loot_image);
+        shine = findViewById(R.id.shine);
         items = findViewById(R.id.items_TV);
 
         String selectedSource = "";
@@ -35,7 +44,6 @@ public class GeneratedLootPopUp extends AppCompatActivity {
              selectedSource =bundle.getString("source");
              selectedQuantity = bundle.getInt("quantity");
         }
-
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -58,7 +66,11 @@ public class GeneratedLootPopUp extends AppCompatActivity {
         }
         items.setText(fullText);
 
+
       backBT = findViewById(R.id.backBT);
       backBT.setOnClickListener(view -> finish());
+        bckDrawable.setEnterFadeDuration(2000);
+        bckDrawable.setExitFadeDuration(4000);
+        bckDrawable.start();
     }
 }

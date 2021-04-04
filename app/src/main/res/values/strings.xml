@@ -12,5 +12,6 @@
     <string name="choose_source">Elegir una fuente:</string>
     <string name="choose_quantity">Elegir una cantidad</string>
     <string name="close">Cerrar</string>
+    <string name="chest_img">chest img</string>
 
 </resources>
