@@ -34,14 +34,14 @@ public class CustomLoot extends AppCompatActivity implements AdapterView.OnItemS
 
         itemName= findViewById(R.id.item_name_ET);
         item_spinner= findViewById(R.id.spinner_type_items);
-        sourceName= findViewById(R.id.source_name_ET);
+         sourceName= findViewById(R.id.source_name_ET);
 
         db = ItemDB.getItemDataBase(this);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.loot_colour_array, android.R.layout.simple_spinner_item);
+                R.array.loot_colour_array, R.layout.item_selected);
 // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown);
 // Apply the adapter to the spinner
         item_spinner.setAdapter(adapter);
         item_spinner.setOnItemSelectedListener(this);

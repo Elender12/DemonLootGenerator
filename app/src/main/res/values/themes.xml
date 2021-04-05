@@ -16,8 +16,9 @@
 
     </style>
     <style name="MainButton" >
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/dark_red</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:backgroundTint">@color/white</item>
         <item name="android:fontFamily">@font/alimony</item>
     </style>
 
@@ -33,6 +34,22 @@
         <item name="android:fontFamily">@font/alimony</item>
         <item name="android:gravity">center</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textColor">@color/teal_200</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+    <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="spinnerDropDownItemStyle">@style/spinnerText</item>
+    </style>
+    <style name="spinnerText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/alimony</item>
+
+    </style>
+
+
+    <style name="editTextBorder" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/text_input</item>
     </style>
 </resources>
