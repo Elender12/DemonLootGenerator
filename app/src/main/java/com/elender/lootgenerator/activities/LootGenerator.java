@@ -1,12 +1,12 @@
 package com.elender.lootgenerator.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import androidx.appcompat.app.AppCompatActivity;
 import com.elender.lootgenerator.R;
 import com.elender.lootgenerator.db.ItemDB;
 import java.util.List;
@@ -26,24 +26,26 @@ public class LootGenerator extends AppCompatActivity implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loot_generator);
 
-
         db = ItemDB.getItemDataBase(this);
 
         sourceSpinner = findViewById(R.id.spinner_sources);
         quantitySpinner = findViewById(R.id.spinner_quantity);
 
-
-
-        String[] quantities = {"Poco", "Normal", "Mucho"};
-
         List<String> sourceNames = db.dao().getSources();
-        sourceSpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, sourceNames));
-        quantitySpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, quantities));
+        sourceSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, sourceNames));
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> quantityAdapter = ArrayAdapter.createFromResource(this, R.array.loot_options_array, R.layout.item_selected);
+        ArrayAdapter<String> sourceAdapter = new ArrayAdapter<>(this, R.layout.item_selected, sourceNames);
+
+        quantityAdapter.setDropDownViewResource(R.layout.spinner_dropdown);
+        sourceAdapter.setDropDownViewResource(R.layout.spinner_dropdown);
+
+        quantitySpinner.setAdapter(quantityAdapter);
+        sourceSpinner.setAdapter(sourceAdapter);
 
         sourceSpinner.setOnItemSelectedListener(this);
         quantitySpinner.setOnItemSelectedListener(this);
-
-
     }
 
 
@@ -58,16 +60,12 @@ public class LootGenerator extends AppCompatActivity implements AdapterView.OnIt
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // An item was selected. You can retrieve the selected item using
-        // parent.getItemAtPosition(pos)
         Spinner spin = (Spinner) parent;
         if (spin.getId() == R.id.spinner_sources) {
-       //     Toast.makeText(this, "se ha pulsado: " + position, Toast.LENGTH_SHORT).show();
             selectedSource = parent.getItemAtPosition(position).toString();
         }
         if (spin.getId() == R.id.spinner_quantity) {
-         //   Toast.makeText(this, "se ha pulsado: " + position, Toast.LENGTH_SHORT).show();
-            selectedQuantity = position+1;
+            selectedQuantity = position + 1;
         }
     }
 
@@ -75,4 +73,5 @@ public class LootGenerator extends AppCompatActivity implements AdapterView.OnIt
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
 }

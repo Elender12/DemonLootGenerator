@@ -24,4 +24,7 @@ public interface LootItemDao {
     @Query("SELECT * FROM LootItem WHERE source = :source AND loot_colour= :loot_colour ORDER BY RANDOM() LIMIT :quantity")
     LootItem[] getLoot(String source, String loot_colour, int quantity);
 
+    @Query("SELECT count(*) FROM LootItem WHERE source = :source")
+    int getSourceCount(String source);
+
 }

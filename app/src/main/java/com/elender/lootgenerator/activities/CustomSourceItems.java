@@ -4,10 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.elender.lootgenerator.R;
 import com.elender.lootgenerator.adapters.CustomAdapter;
@@ -20,41 +20,31 @@ public class CustomSourceItems extends AppCompatActivity  implements CustomAdapt
 
     private static final String TAG = "CustomSourceItems";
     ItemDB db;
-
-    protected RecyclerView mRecyclerView;
+//    protected RecyclerView mRecyclerView;
     protected CustomAdapter mAdapter;
-    protected RecyclerView.LayoutManager mLayoutManager;
-    protected String[] mDataset;
-
-    private static final String KEY_LAYOUT_MANAGER = "layoutManager";
-    private static final int SPAN_COUNT = 2;
-    private static final int DATASET_COUNT = 60;
+    TextView tv;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_source_items);
-
+        tv = findViewById(R.id.tv_sourceName);
         db = ItemDB.getItemDataBase(this);
         String sourceName ="";
         Bundle bundle=getIntent().getExtras();
         if(bundle != null){
-            sourceName =bundle.getString("sourceName");
+            sourceName =bundle.getString("sourceName").toUpperCase();
         }
-
+        tv.setText(sourceName);
         LootItem[] items = db.dao().showSourceItems(sourceName);
 
         if(items.length > 0){
             ArrayList<String> data = new ArrayList<>();
-            mDataset = new String[items.length];
-            for(int i = 0; i < items.length; i++)
-            {
-                data.add(items[i].getLootColour() + " es " + items[i].getName());
-                mDataset[i] = items[i].getLootColour() + " es " + items[i].getName();
-                Log.d(TAG, "onCreate: "+items[i].getLootColour() + " es " + items[i].getName());
+            for (LootItem item : items) {
+                data.add(item.getLootColour() + " : " + item.getName());
+                Log.d(TAG, "onCreate: " + item.getLootColour() + " es " + item.getName());
             }
-
             RecyclerView recyclerView = findViewById(R.id.recycler);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             mAdapter = new CustomAdapter(this, data);
@@ -73,7 +63,7 @@ public class CustomSourceItems extends AppCompatActivity  implements CustomAdapt
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(this, "You clicked " + mAdapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "El elemento " + mAdapter.getItem(position) + " está en la línea " + position, Toast.LENGTH_SHORT).show();
     }
 
 

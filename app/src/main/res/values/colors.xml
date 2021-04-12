@@ -8,6 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="dark_red">#140304</color>
-    <color name="brown">#594535</color>
-    <color name="grey">#a8a7a5</color>
+    <color name="brown">#451216</color>
+    <color name="grey">#451216</color>
+    <color name="blood_red">#451216</color>
+    <color name="bright_red">#d10617</color>
+<!--    #300004    #a8a7a5-->
 </resources>

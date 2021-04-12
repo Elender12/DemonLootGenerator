@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/MainButton"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_demon"
+    android:background="@drawable/dark_devil"
     tools:context=".MainActivity">
 
 
@@ -16,11 +15,13 @@
         android:layout_height="53dp"
         android:onClick="toGenerateLoot"
         android:text="@string/generate_loot"
+        android:tooltipText="Invocar demonios para obtener un botín. ¡La suerte ya está echada!"
         app:layout_constraintBottom_toTopOf="@+id/guideline_texto2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.602"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline_texto"
-        app:layout_constraintVertical_bias="0.245" />
+        app:layout_constraintVertical_bias="0.136" />
 
     <Button
         android:id="@+id/btn_create"
@@ -29,11 +30,13 @@
         android:layout_height="56dp"
         android:onClick="toCreateCustomLoot"
         android:text="@string/generate_source"
+        android:tooltipText="Ofrece tu propio sacrificio"
         app:layout_constraintBottom_toTopOf="@+id/guideline_texto2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.602"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_generate"
-        app:layout_constraintVertical_bias="0.316" />
+        app:layout_constraintVertical_bias="0.322" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_texto"
@@ -57,9 +60,10 @@
         android:text="@string/app_name"
         app:layout_constraintBottom_toTopOf="@+id/guideline_texto"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.045" />
+        app:layout_constraintVertical_bias="0.087" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
