@@ -4,6 +4,8 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,6 +14,7 @@ import java.util.List;
 
 @Dao
 public interface LootItemDao {
+
     /*Insertar un elemento */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertItem(LootItem... lootItems);
@@ -28,13 +31,14 @@ public interface LootItemDao {
     @Query("SELECT * FROM LootItem WHERE source = :source AND loot_colour= :loot_colour ORDER BY RANDOM() LIMIT :quantity")
     LootItem[] getLoot(String source, String loot_colour, int quantity);
 
-
-    @Query("SELECT count(*) FROM LootItem WHERE source = :source")
-    int getSourceCount(String source);
-
     //sentencia que verifica si ya hay un elemento existente con el nombre indicado
     @Query("SELECT count(*) FROM LootItem WHERE name= :name")
     int checkItem( String name);
 
+    //Devuelve todos los origenes creados por el usuario
+    @Query("SELECT DISTINCT source FROM LootItem WHERE source NOT IN (:names)")
+    String[] getCustomSources(String[] names);
 
+    @Query("SELECT count(*) FROM LootItem WHERE source = :source AND loot_colour= :loot_colour")
+    int countItems(String source, String loot_colour);
 }

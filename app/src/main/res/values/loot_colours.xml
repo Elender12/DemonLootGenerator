@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="loot_colour_array">
-        <item>Blanco</item>
-        <item>Verde</item>
-        <item>Azul</item>
-        <item>Morado</item>
-        <item>Dorado</item>
+        <item>blanco</item>
+        <item>verde</item>
+        <item>azul</item>
+        <item>morado</item>
+        <item>dorado</item>
     </string-array>
 </resources>

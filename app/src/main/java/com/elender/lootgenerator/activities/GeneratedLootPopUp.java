@@ -5,6 +5,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.elender.lootgenerator.R;
+import com.elender.lootgenerator.db.ItemDB;
 import com.elender.lootgenerator.db.LootItem;
 import com.elender.lootgenerator.utils.GeneratorHelper;
 
@@ -53,7 +55,6 @@ public class GeneratedLootPopUp extends AppCompatActivity {
         ConstraintLayout constraintLayout = findViewById(R.id.layoutPopup);
         AnimationDrawable bckDrawable = (AnimationDrawable) constraintLayout.getBackground();
 
-
         String selectedSource = "";
         int selectedQuantity = 0;
         //elementos que recibe desde la vista anterior
@@ -63,15 +64,13 @@ public class GeneratedLootPopUp extends AppCompatActivity {
              selectedQuantity = bundle.getInt("quantity");
         }
 
-
-
         //query en la base de datos
         LootItem[] prize = GeneratorHelper.generateLoot(this, selectedSource, selectedQuantity);
-        if (prize.length > 0) {
+        if (prize != null ) {
             //hay suficientes datos en la base de datos
             String loot_colour =  prize[0].getLootColour();
             //muestra la imagen correspondiente
-            img.setImageResource(getResources().getIdentifier(loot_colour, "drawable", getPackageName()));
+            img.setImageResource(getResources().getIdentifier(loot_colour.toLowerCase(), "drawable", getPackageName()));
 
             //se crea la animación
             RotateAnimation anim = new RotateAnimation(0.0f, 360.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
@@ -87,7 +86,6 @@ public class GeneratedLootPopUp extends AppCompatActivity {
             //mostrar el color del botin mediante texto
             setTxtColor(loot_colour);
 
-
             if(mediaPlayer == null){
                 mediaPlayer = MediaPlayer.create(this, sound);
                 mediaPlayer.start();
@@ -96,7 +94,7 @@ public class GeneratedLootPopUp extends AppCompatActivity {
             StringBuilder fullText= new StringBuilder();
             //mostrar los elementos al usuario
             for (LootItem item: prize) {
-                String text =  "-> "+item.getName()+"\n\n";
+                String text =  "\u2022 "+item.getName()+"\n\n";
                 fullText.append(text);
             }
             items.setText(fullText);

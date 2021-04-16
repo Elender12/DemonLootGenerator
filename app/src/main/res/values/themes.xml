@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.LootGenerator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary"> #a8a7a5</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">#a8a7a5</item>
+        <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -16,20 +16,21 @@
 
     </style>
 
-
+    <!--Estilo de la ventana emergente donde se muestra el botín generado-->
     <style name="pop_up_style" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:theme"> @style/Theme.AppCompat.Dialog.Alert</item>
+        <item name="android:theme">@style/Theme.AppCompat.Dialog.Alert</item>
     </style>
 
 
-
-    <style name="MainButton" >
+    <!--Estilo de los botones de la aplicación-->
+    <style name="MainButton">
         <item name="android:textColor">@color/dark_red</item>
         <item name="android:textSize">20sp</item>
-<!--        <item name="android:backgroundTint">@color/white</item>-->
+        <!--        <item name="android:backgroundTint">@color/white</item>-->
         <item name="android:fontFamily">@font/alimony</item>
     </style>
 
+    <!--Estilo de los titulos de la aplicación-->
     <style name="mainTitle">
         <item name="android:textSize">45sp</item>
         <item name="android:fontFamily">@font/demon_sker</item>
@@ -37,6 +38,7 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <!--Estilo de todos los TextView-->
     <style name="textViewStyle">
         <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">@font/alimony</item>
@@ -45,10 +47,11 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-
+    <!--Estilo de los spinners-->
     <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
         <item name="spinnerDropDownItemStyle">@style/spinnerText</item>
     </style>
+
     <style name="spinnerText">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">15sp</item>
@@ -56,7 +59,7 @@
 
     </style>
 
-
+    <!--Estilo de la caja-cuardo de los EditText-->
     <style name="editTextBorder" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/text_input</item>
     </style>

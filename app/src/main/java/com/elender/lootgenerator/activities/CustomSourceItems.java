@@ -23,10 +23,8 @@ public class CustomSourceItems extends AppCompatActivity implements CustomAdapte
 
     private static final String TAG = "CustomSourceItems";
     ItemDB db;
-    //    protected RecyclerView mRecyclerView;
     protected CustomAdapter mAdapter;
     TextView tv;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,39 +32,47 @@ public class CustomSourceItems extends AppCompatActivity implements CustomAdapte
         setContentView(R.layout.activity_custom_source_items);
         tv = findViewById(R.id.tv_sourceName);
         db = ItemDB.getItemDataBase(this);
-        String sourceName = "";
+
+        String sourceName = null;
+       //se recogen los datos desde la clase que invoca
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            sourceName = bundle.getString("sourceName").toUpperCase();
+            sourceName = bundle.getString("sourceName");
         }
-        tv.setText(sourceName);
-        LootItem[] items = db.dao().showSourceItems(sourceName);
+        if(sourceName != null)
+        {
+            tv.setText(sourceName.toUpperCase());
+            //llamada a la base de datos
+            LootItem[] items = db.dao().showSourceItems(sourceName);
+            //se verifica que haya datos
+            if (items.length > 0) {
+                ArrayList<String> data = new ArrayList<>();
+                for (LootItem item : items) {
+                    data.add("("+item.getLootColour() + ") " + item.getName());
+                }
+                RecyclerView recyclerView = findViewById(R.id.recycler);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                mAdapter = new CustomAdapter(this, data);
+                mAdapter.setClickListener(this);
+                recyclerView.setAdapter(mAdapter);
 
-        if (items.length > 0) {
-            ArrayList<String> data = new ArrayList<>();
-            for (LootItem item : items) {
-                data.add(item.getLootColour() + " : " + item.getName());
-                Log.d(TAG, "onCreate: " + item.getLootColour() + " es " + item.getName());
+                LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+                DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                        layoutManager.getOrientation());
+                recyclerView.addItemDecoration(dividerItemDecoration);
+            } else {
+                Toast.makeText(this, "No hay datos para esa fuente.", Toast.LENGTH_LONG).show();
+                finish();
             }
-            RecyclerView recyclerView = findViewById(R.id.recycler);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            mAdapter = new CustomAdapter(this, data);
-            mAdapter.setClickListener(this);
-            recyclerView.setAdapter(mAdapter);
-
-            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-            DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-                    layoutManager.getOrientation());
-            recyclerView.addItemDecoration(dividerItemDecoration);
-        } else {
-            Toast.makeText(this, "No hay datos para esa fuente.", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(this, "Hubo un error con el nombre del origen.", Toast.LENGTH_LONG).show();
             finish();
         }
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(this, "El elemento " + mAdapter.getItem(position) + " está en la línea " + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Has seleccionado " + mAdapter.getItem(position) + " en la línea " + position+1, Toast.LENGTH_SHORT).show();
     }
 
 

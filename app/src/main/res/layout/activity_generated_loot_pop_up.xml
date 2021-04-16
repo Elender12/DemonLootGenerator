@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_list"
     tools:context=".activities.GeneratedLootPopUp">
-
+    <!--Vista que muestra el botín generado en una ventana emergente-->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline137"
         android:layout_width="wrap_content"
@@ -80,7 +80,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/chest_img"
-        android:src="@drawable/shine"
         app:layout_constraintBottom_toTopOf="@+id/guideline156"
         app:layout_constraintEnd_toStartOf="@+id/guideline167"
         app:layout_constraintStart_toStartOf="@+id/guideline166"
@@ -94,18 +93,19 @@
         android:layout_width="275dp"
         android:layout_height="232dp"
         android:layout_marginEnd="24dp"
+        android:textAlignment="viewStart"
         app:layout_constraintBottom_toTopOf="@+id/guideline154"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.601"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline166"
         app:layout_constraintTop_toTopOf="@+id/guideline153"
-        app:layout_constraintVertical_bias="0.39" />
+        app:layout_constraintVertical_bias="0.428" />
 
     <TextView
         android:id="@+id/textView12"
         style="@style/textViewStyle"
-        android:layout_width="254dp"
-        android:layout_height="29dp"
+        android:layout_width="262dp"
+        android:layout_height="48dp"
         android:text="@string/congrats"
         app:layout_constraintBottom_toTopOf="@+id/guideline19"
         app:layout_constraintEnd_toStartOf="@+id/guideline167"
@@ -139,21 +139,21 @@
         app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="@+id/guideline166"
         app:layout_constraintTop_toTopOf="@+id/guideline20"
-        app:layout_constraintVertical_bias="0.372" />
+        app:layout_constraintVertical_bias="0.459" />
 
     <TextView
         android:id="@+id/textView11"
         style="@style/textViewStyle"
-        android:layout_width="227dp"
-        android:layout_height="37dp"
+        android:layout_width="234dp"
+        android:layout_height="49dp"
         android:layout_marginTop="32dp"
         android:text="@string/content"
         app:layout_constraintBottom_toTopOf="@+id/guideline19"
         app:layout_constraintEnd_toStartOf="@+id/guideline167"
-        app:layout_constraintHorizontal_bias="0.425"
+        app:layout_constraintHorizontal_bias="0.392"
         app:layout_constraintStart_toStartOf="@+id/guideline166"
         app:layout_constraintTop_toTopOf="@+id/guideline20"
-        app:layout_constraintVertical_bias="0.758" />
+        app:layout_constraintVertical_bias="0.846" />
 
     <Button
         android:id="@+id/backBT"

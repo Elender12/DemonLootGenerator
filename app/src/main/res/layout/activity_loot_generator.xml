@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/generar_v2"
     tools:context=".activities.LootGenerator">
-
+    <!--Vista que recoge los datos que introduce el usuario para crear un origen junto a sus objetos-->
     <Spinner
         android:id="@+id/spinner_sources"
         style="@style/Widget.AppCompat.Spinner"

@@ -18,7 +18,7 @@ public abstract class ItemDB extends RoomDatabase {
     public abstract LootItemDao dao();
 
     /**
-     * Se ha realizado una migración porque se realizaron cambios en el fichero de la base de datos y hubo que comunicarlo
+     * Se ha realizado una migración porque se realizaron cambios en el fichero de la base de datos y hubo que comunicarlo a Room
      * */
     static Migration migration = new Migration(1, 2) {
         @Override

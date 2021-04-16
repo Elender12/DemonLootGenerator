@@ -10,7 +10,7 @@ import java.util.UUID;
 /**
  * Entidad que se convierte en una tabla en la base de datos
  * Se guarda el nombre del objeto, el origen al cual pertenece y el color que le corresponde según su calidad
- * Un objeto solo puede pertenecer
+ * Cada objeto tiene un nombre único
  *
  * */
 
