@@ -4,13 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.util.UUID;
 
-@Entity(tableName = "LootItem")
+/**
+ * Entidad que se convierte en una tabla en la base de datos
+ * Se guarda el nombre del objeto, el origen al cual pertenece y el color que le corresponde según su calidad
+ * Un objeto solo puede pertenecer
+ *
+ * */
 
+@Entity(tableName = "LootItem")
 public class LootItem {
 
     @PrimaryKey

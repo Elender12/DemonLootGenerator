@@ -13,14 +13,17 @@ import com.elender.lootgenerator.R;
 import com.elender.lootgenerator.adapters.CustomAdapter;
 import com.elender.lootgenerator.db.ItemDB;
 import com.elender.lootgenerator.db.LootItem;
-
 import java.util.ArrayList;
 
-public class CustomSourceItems extends AppCompatActivity  implements CustomAdapter.ItemClickListener {
+
+/**
+ * Clase que muestra los elementos de un origen determinado
+ * */
+public class CustomSourceItems extends AppCompatActivity implements CustomAdapter.ItemClickListener {
 
     private static final String TAG = "CustomSourceItems";
     ItemDB db;
-//    protected RecyclerView mRecyclerView;
+    //    protected RecyclerView mRecyclerView;
     protected CustomAdapter mAdapter;
     TextView tv;
 
@@ -31,15 +34,15 @@ public class CustomSourceItems extends AppCompatActivity  implements CustomAdapt
         setContentView(R.layout.activity_custom_source_items);
         tv = findViewById(R.id.tv_sourceName);
         db = ItemDB.getItemDataBase(this);
-        String sourceName ="";
-        Bundle bundle=getIntent().getExtras();
-        if(bundle != null){
-            sourceName =bundle.getString("sourceName").toUpperCase();
+        String sourceName = "";
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            sourceName = bundle.getString("sourceName").toUpperCase();
         }
         tv.setText(sourceName);
         LootItem[] items = db.dao().showSourceItems(sourceName);
 
-        if(items.length > 0){
+        if (items.length > 0) {
             ArrayList<String> data = new ArrayList<>();
             for (LootItem item : items) {
                 data.add(item.getLootColour() + " : " + item.getName());
@@ -55,7 +58,7 @@ public class CustomSourceItems extends AppCompatActivity  implements CustomAdapt
             DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
                     layoutManager.getOrientation());
             recyclerView.addItemDecoration(dividerItemDecoration);
-        }else{
+        } else {
             Toast.makeText(this, "No hay datos para esa fuente.", Toast.LENGTH_LONG).show();
             finish();
         }
@@ -65,7 +68,6 @@ public class CustomSourceItems extends AppCompatActivity  implements CustomAdapt
     public void onItemClick(View view, int position) {
         Toast.makeText(this, "El elemento " + mAdapter.getItem(position) + " está en la línea " + position, Toast.LENGTH_SHORT).show();
     }
-
 
 
 }

@@ -4,10 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import com.elender.lootgenerator.activities.CustomLoot;
 import com.elender.lootgenerator.activities.LootGenerator;
 
+
+/**
+ * @author Elena Cirstea
+ * Clase principal a partir de la cual se inicia la actividad
+ * Cada boton lleva a una actividad determinada
+ * */
 public class MainActivity extends AppCompatActivity {
 
     Intent intent;
